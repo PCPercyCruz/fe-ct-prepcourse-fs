@@ -6,6 +6,12 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+   var nuevoAreglo = [];
+   for (var recorre in objeto){
+      var nuevoSubArreglo = new Array(recorre, objeto[recorre]);
+      nuevoAreglo.push(nuevoSubArreglo);
+   }
+   return nuevoAreglo;
 }
 
 function numberOfCharacters(string) {
@@ -14,14 +20,67 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético.
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
-}
 
+
+/*    for(var i=0; i<string.length; i++){
+      suma=0
+      suma = suma +i;
+      var nuevoObjeto = {};
+      nuevoObjeto[string[i]]=suma;
+   }
+   return nuevoObjeto;
+} */
+
+let orden = string.toLowerCase().split('').sort().join('');
+ let objetoCantidadCaracteres = {};
+
+   for (let i=0; i<string.length; i++){
+     let caracterActual = orden[i];
+     if (caracterActual in objetoCantidadCaracteres){
+       objetoCantidadCaracteres[caracterActual]++;
+     }
+     else{
+       objetoCantidadCaracteres[caracterActual] = 1;
+     }
+   }
+   
+   return objetoCantidadCaracteres ;
+
+/* let objetoCantidadCaracteres = {};
+for (let i=0; i<string.length; i++){
+  let caracterActual = string[i];
+  if (caracterActual in objetoCantidadCaracteres){
+    objetoCantidadCaracteres[caracterActual]++;
+  }
+  else{
+    objetoCantidadCaracteres[caracterActual] = 1;
+  }
+}
+return objetoCantidadCaracteres;
+} */
+}
 function capToFront(string) {
    // Recibes un string con algunas letras en mayúscula y otras en minúscula.
    // Debes enviar todas las letras en mayúscula al comienzo del string.
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   
+   var array5 = string.split('');
+   //var nuevoAreglo =[];
+   var mayusculas = array5.filter((letra) =>
+      letra === letra.toUpperCase());
+      //console.log(mayusculas);
+
+   var minusculas = array5.filter((letra) =>
+       letra === letra.toLowerCase());    
+       //console.log(minusculas);
+       
+       var ma = mayusculas.join('');
+       var mi = minusculas.join('');
+       var frasefinal = ma + mi;
+       //console.log(ma+mi);
+       return(frasefinal);
 }
 
 function asAmirror(frase) {
