@@ -7,9 +7,11 @@ function deObjetoAarray(objeto) {
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
    var nuevoAreglo = [];
+   
    for (var recorre in objeto){
       var nuevoSubArreglo = new Array(recorre, objeto[recorre]);
       nuevoAreglo.push(nuevoSubArreglo);
+     
    }
    return nuevoAreglo;
 }
@@ -88,18 +90,59 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+   var esReverso = frase.split('').reverse().join('')
+  var orden = esReverso.split(' ').reverse().join(' ')
+  return orden;
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+
+ /*   var falta = numero;
+   var numeroInvertido = 0; //conprueba si es igual al numero recibido si es igual es capicua
+   
+   while( falta >0){
+   var esResto = falta % 10 //Obtiene el ultimo numero ejemplo de 1080 obtiene 0
+   var falta = falta / 10; //Obtiene el numero menos el ultimo digitoejemple 1080 obtiene 108 el ultimo numero NO
+   numeroInvertido = numeroInvertido * 10 + esResto;
+
+   }
+
+   if(numeroInvertido === numero){
+      return ('Es capicua"')
+   } else return('No es capicua') */
+
+
+   /* var esInvertido = numero.toString().split('').reverse().join('')
+   console.log(esInvertido);
+   //var i = new Number(esInvertido);
+   console.log(esInvertido);
+   
+   if( numero === esInvertido) 
+     return("Es capicua")
+    else{
+     return("No es capicua")
+   } */
+   var invertidoCapicua = numero.toString().split('').reverse().join('')
+   if(numero == invertidoCapicua){
+      return("Es capicua");
+   } else return("No es capicua");
+
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   //let convertir = string.split('')
+   let arr = string.split('')
+   let validacion = ["a","b","c"]
+   let dat = arr.filter(e=>!validacion.includes(e))
+   string = dat.join('');
+   return string;
+
 }
 
 function sortArray(arrayOfStrings) {
@@ -108,7 +151,12 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   let nuevoOrden = arrayOfStrings.sort((a, b) => {
+		return a.length - b.length;
+   });
+   return nuevoOrden;
 }
+//sortArray(["You", "are", "beautiful", "looking"])
 
 function buscoInterseccion(array1, array2) {
    // Recibes dos arreglos de números.
@@ -117,6 +165,18 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   var arrayvacio = [];
+   var resultado = array1.filter((e)=> array2.includes(e))
+   if (resultado.length > 0){
+     return resultado;
+   } return arrayvacio;
+
+   //otra forma hay que analisarlo
+  /*  return array1.reduce((acc,e)=>{
+      if(!!array2.includes(e))acc.push(e);
+      return acc;
+    },[]) */
+   
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
